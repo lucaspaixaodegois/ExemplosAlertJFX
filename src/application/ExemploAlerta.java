@@ -81,13 +81,12 @@ public class ExemploAlerta extends Application {
 				// Capturar as resposta do usuário sobre a mensagem de confirmação
 				Optional<ButtonType> resposta = alert.showAndWait();
 				if (resposta.get().equals(ButtonType.OK)) {
-					System.out.println("Oquei");
+					System.out.println("OK!");					
 				} else if (resposta.get().equals(ButtonType.CANCEL)) {
 					System.out.println("Cancelar");
 				}
 			}
 		});
-
 		// Opção apenas com a estrutura da janela de alerta para ser adiconada as funcionalidades
 		botao05.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
