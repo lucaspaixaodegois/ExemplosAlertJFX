@@ -19,7 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ExemploAlerta extends Application {
-	
+
 	private Button botao01 = new Button("Exemplo 01");
 	private Button botao02 = new Button("Exemplo 02");
 	private Button botao03 = new Button("Exemplo 03");
@@ -33,20 +33,20 @@ public class ExemploAlerta extends Application {
 	@Override
 	public void init() throws Exception {
 		super.init();
-		
-		//Exemplo de um alerta de informação sem o cabeçalho
+
+		// Exemplo de um alerta de informação sem o cabeçalho
 		botao01.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informação");
-				//retirando o cabeçalho
+				// retirando o cabeçalho
 				alert.setHeaderText(null);
 				alert.setContentText("Você clicou no exemplo 01!");
 				alert.show();
 			}
 		});
-		
+		// Exempo de um alerta de erro!
 		botao02.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -57,7 +57,8 @@ public class ExemploAlerta extends Application {
 				alert.show();
 			}
 		});
-		
+		// Exempo de um alerta de atenção notificação!
+
 		botao03.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -68,7 +69,7 @@ public class ExemploAlerta extends Application {
 				alert.show();
 			}
 		});
-		
+		// Exempo de um alerta de Confirmação!
 		botao04.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -76,18 +77,18 @@ public class ExemploAlerta extends Application {
 				alert.setTitle("Confirmação");
 				alert.setHeaderText("Está operação é um pouco crítica!");
 				alert.setContentText("Deseja realmente excluir?");
-				
-				//Capturar as resposta do usuário sobre a mensagem de confirmação
+
+				// Capturar as resposta do usuário sobre a mensagem de confirmação
 				Optional<ButtonType> resposta = alert.showAndWait();
-				if(resposta.get().equals(ButtonType.OK)) {
+				if (resposta.get().equals(ButtonType.OK)) {
 					System.out.println("Oquei");
-				}else if(resposta.get().equals(ButtonType.CANCEL)) {
+				} else if (resposta.get().equals(ButtonType.CANCEL)) {
 					System.out.println("Cancelar");
 				}
 			}
 		});
-		
-		//Opção apenas com a estrutura da janela de alerta para ser adiconada as funcionalidades
+
+		// Opção apenas com a estrutura da janela de alerta para ser adiconada as funcionalidades
 		botao05.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -98,7 +99,7 @@ public class ExemploAlerta extends Application {
 				alert.show();
 			}
 		});
-		
+		//Exempo de um alerta de mensagem  com opc de ler mais detalhes
 		botao06.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -106,15 +107,15 @@ public class ExemploAlerta extends Application {
 				alert.setTitle("Informação");
 				alert.setHeaderText("Detalhes");
 				alert.setContentText("Você clivou no botão 06 .. veja mais detalhes");
-				
+
 				Label lblDetalhes = new Label("Descrição");
 				alert.getDialogPane().setExpandableContent(lblDetalhes);
-				
+
 				alert.show();
 			}
 		});
-		
-		//Adicionando outros botões
+
+		// Adicionando outros botões
 		botao07.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -122,19 +123,19 @@ public class ExemploAlerta extends Application {
 				alert.setTitle("Informação");
 				alert.setHeaderText("Outros botões");
 				alert.setContentText("Selecione uma das opções");
-				
+
 				ButtonType btnSim = new ButtonType("Sim");
 				ButtonType btnNao = new ButtonType("Não");
 				ButtonType btnTalvez = new ButtonType("Talvez");
 				ButtonType btnCerteza = new ButtonType("Certeza", ButtonData.CANCEL_CLOSE);
-				
+
 				alert.getButtonTypes().addAll(btnSim, btnNao, btnTalvez, btnCerteza);
-				
+
 				Optional<ButtonType> resposta = alert.showAndWait();
 				System.out.println(resposta.get().getText());
 			}
 		});
-		
+
 		botao08.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -142,40 +143,41 @@ public class ExemploAlerta extends Application {
 				dialog.setTitle("Município");
 				dialog.setHeaderText("Cabeçalho qualquer");
 				dialog.setContentText("Informe o nome da sua cidade: ");
-				
+
 				Optional<String> resposta = dialog.showAndWait();
-				if(resposta.isPresent()) {
+				if (resposta.isPresent()) {
 					System.out.println("A cidade digitada foi: " + resposta.get());
 				}
 			}
 		});
-		
+		//Exempo de um dropbox ja preenchido!
+
 		botao09.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				ChoiceDialog<String> dialog = new ChoiceDialog<String>("Palmas", Arrays.asList("Araguaina", "Paraíso", "Palmas"));
+				ChoiceDialog<String> dialog = new ChoiceDialog<String>("Palmas",
+						Arrays.asList("Araguaina", "Paraíso", "Palmas"));
 				Optional<String> resposta = dialog.showAndWait();
 				System.out.println(resposta.get());
 			}
 		});
 	}
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
+
 		VBox root = new VBox();
-		root.getChildren().addAll(botao01, botao02, botao03, botao04, 
-								botao05, botao06, botao07, botao08, botao09);
+		root.getChildren().addAll(botao01, botao02, botao03, botao04, botao05, botao06, botao07, botao08, botao09);
 		root.setAlignment(Pos.CENTER);
 		root.setSpacing(5);
-		
+
 		Scene scene = new Scene(root, 400, 600);
-		
+
 		// Adiciona a cena no palco
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
