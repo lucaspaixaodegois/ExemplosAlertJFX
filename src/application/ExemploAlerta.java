@@ -19,7 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ExemploAlerta extends Application {
-
+	
 	private Button botao01 = new Button("Exemplo 01");
 	private Button botao02 = new Button("Exemplo 02");
 	private Button botao03 = new Button("Exemplo 03");
